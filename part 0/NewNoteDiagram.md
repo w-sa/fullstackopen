@@ -5,11 +5,33 @@
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
-    server->>browser: status code 302 - request that the browser perform a new GET request
+    server->>browser: 302 - request that the browser perform a new GET request
     deactivate server
+
+    Note right of browser: Form data is submitted to the server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
-    server->>browser: 
+    server->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server->>browser: CSS file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server->>browser: JS file
+    deactivate server
+
+    Note right of browser: JavaScript to fetch the JSON is executed
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+    deactivate server
+
+    Note right of browser: Browser executes callback to render the fetched JSON
 
 ```
