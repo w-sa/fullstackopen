@@ -1,4 +1,5 @@
 import Content from "./Content";
+import CourseTotal from "./CourseTotal";
 import Header from "./Header";
 
 const Course = ({ course: { id, name, parts } }) => {
@@ -6,6 +7,7 @@ const Course = ({ course: { id, name, parts } }) => {
     <div key={id}>
       <Header name={name} />
       <Content parts={parts} />
+      <CourseTotal parts={parts} />
     </div>
   );
 };
