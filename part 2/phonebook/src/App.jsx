@@ -1,20 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Phonebook from "./components/Phonebook";
 import Form from "./components/Form";
 import Filter from "./components/Filter";
+import peopleService from "./services/people";
 
 const App = () => {
-  const DUMMY_DATA = [
-    { id: 1, name: "Seba Jun", number: "0434534534" },
-    { id: 2, name: "Daniel Dumile", number: "0434534534" },
-    { id: 3, name: "Akira Kurosawa", number: "0434534534" },
-    { id: 4, name: "Nelson Mandela", number: "0434534534" },
-  ];
-
-  const [persons, setPersons] = useState(DUMMY_DATA);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filterBy, setFilterBy] = useState("");
+
+  useEffect(() => {
+    peopleService.getAll().then((data) => {
+      setPersons(data);
+    });
+  }, []);
 
   const nameChangeHandler = (event) => {
     setNewName(event.target.value);
@@ -43,14 +44,15 @@ const App = () => {
     }
 
     const newPerson = {
-      id: newName,
       name: newName,
       number: newNumber,
     };
 
-    setPersons(persons.concat(newPerson));
-    setNewName("");
-    setNewNumber("");
+    peopleService.create(newPerson).then((data) => {
+      setPersons(persons.concat(data));
+      setNewName("");
+      setNewNumber("");
+    });
   };
 
   const displayedPersons = filterBy

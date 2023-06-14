@@ -3,7 +3,6 @@ import PhonebookEntry from "./PhonebookEntry";
 const Phonebook = ({ persons }) => {
   return (
     <div>
-      <h2>Numbers</h2>
       <ol>
         {persons.map((person) => (
           <PhonebookEntry

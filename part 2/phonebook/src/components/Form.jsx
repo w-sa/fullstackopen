@@ -1,7 +1,6 @@
 const Form = (props) => {
   return (
     <div>
-      <h2>Add</h2>
       <form onSubmit={props.addPhoneEntry}>
         <div>
           name:
