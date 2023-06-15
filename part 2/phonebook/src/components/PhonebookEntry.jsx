@@ -1,7 +1,7 @@
-const PhonebookEntry = ({ name, number }) => {
+const PhonebookEntry = ({ id, name, number, deletePhoneEntry }) => {
   return (
     <li>
-      {name} {number}
+      {name} {number} <button onClick={() => deletePhoneEntry(id)}>Delete</button>
     </li>
   );
 };
