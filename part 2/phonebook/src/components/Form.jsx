@@ -1,7 +1,7 @@
 const Form = (props) => {
   return (
     <div>
-      <form onSubmit={props.addPhoneEntry}>
+      <form onSubmit={props.handleAddEntry}>
         <div>
           name:
           <input value={props.newName} onChange={props.onNameChange} />

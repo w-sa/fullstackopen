@@ -1,14 +1,3 @@
 {
-  "persons": [
-    {
-      "name": "Oda Nobunaga",
-      "number": "123",
-      "id": 2
-    },
-    {
-      "name": "Takeda Shingen",
-      "number": "123443",
-      "id": 3
-    }
-  ]
+  "persons": []
 }
